@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "web_ban_hang";
-$conn = new mysqli($host,$username,$password,$dbname);
+require "./model/connect.php";
+$db = new Database();
+$conn = $db->conn;
 
-$id=1;
 $sql = "SELECT * FROM sanpham";
 $sp = [];
 $result = $conn->query($sql);
@@ -25,10 +22,10 @@ while($row = $result->fetch_assoc()){
 <body>
     <div class="container mt-3">
         <a href="index.php" class="btn btn-info">Trang chủ</a>
-        <a href="sp.php" class="btn btn-info">Sản phẩm</a>
+        <a href="http://localhost/web/view/sp.php" class="btn btn-info">Sản phẩm</a>
         <a href="tintuc.php" class="btn btn-info">Tin tức</a>
-        <a href="login.html" class="btn btn-info">Đăng nhập</a>
-        <a href="dangky.html" class="btn btn-info">Đăng ký</a>
+        <a href="./view/login.php" class="btn btn-info">Đăng nhập</a>
+        <a href="./view/dangky.php" class="btn btn-info">Đăng ký</a>
     </div>  
 
     <h2 class="text text-success">Một số sản phẩm nổi bật</h2>

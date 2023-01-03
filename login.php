@@ -1,9 +1,15 @@
 <?php
-require'connect.php';
+require './model/connect.php';
+
+$db = new Database;
+$conn = $db->conn;
+
 //SESSION
 session_start();
 session_destroy();
 $sql = "SELECT username,password,fullname FROM user";
+
+
 $sql = $conn->query($sql);
 while($row = $sql->fetch_assoc()){
     $_SESSION[] = $row;
@@ -26,8 +32,7 @@ for($i=0;$i<$so_ptu;$i++)
 {
     if($_SESSION[$i]['username']==$username){
         if($_SESSION[$i]['password']==$password){
-            echo "Xin chào " . $_SESSION[$i]['fullname'] . ". Bạn đã đăng nhập thành công. <a href='http://localhost/web/index.html'>Đến trang chủ</a>";
-            exit;
+            header("Location: http://localhost/web/");
         }
     }
 }
