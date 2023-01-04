@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Trang đăng kí</title>
@@ -10,8 +11,8 @@
 <body>
 
 <div class="container mt-3">
-    <h2>Đăng ký tài khoản mới</h2>
-    <form action="http://localhost/web/controller/register.php" method="post">
+    <h2>Sửa thông tin người dùng</h2>
+    <form action="http://localhost/web/controller/sua_user.php" method="post">
         <div class="mb-3 mt-3">
         <label for="username">Tên tài khoản:</label>
         <input type="varchar" class="form-control" id="username" placeholder="Nhập username" name="username">
@@ -32,7 +33,7 @@
         <label for="pwd">Số điện thoại:</label>
         <input type="varchar" class="form-control" placeholder="Nhập số điện thoại" name="sdt">
         </div>
-        <button type="submit" class="btn btn-primary">Đăng ký</button>
+        <button type="submit" class="btn btn-primary">Sửa</button>
         <button type="reset" class="btn btn-primary">Nhập lại</button>
     </form>
 </div>
