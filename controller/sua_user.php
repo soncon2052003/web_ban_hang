@@ -1,11 +1,8 @@
 <?php
-    $db = new Database;
-    $conn = $db->conn();
-    $sql = "UPDATE user SET 'username'='$this->username','password'='$this->password','fullname,'='$this->fullname,
-        'age'='$this->age, 'sdt'='$this->sdt' WHERE id='$id'";
-    if($conn->query($sql)===true){
-        echo "Sửa thành công";
-    }else{
-        echo "Lỗi: " . $sql . "<br>" . $conn->error;
-    }
+require_once "../model/user.php";
+if(isset($_POST['id'])){
+    $id = $_POST['id'];
+}
+$user = new User($_POST['username'],$_POST['password'],$_POST['fullname'],$age = $_POST['age'],$age = $_POST['sdt']);
+$user->sua_user($id);
 ?>

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+require_once "../model/connect.php";
+$id = $_GET['id'];
+$sql = "SELECT * FROM user WHERE id=$id";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,28 +18,39 @@
 <div class="container mt-3">
     <h2>Sửa thông tin người dùng</h2>
     <form action="http://localhost/web/controller/sua_user.php" method="post">
+        <?php
+        $id = $_GET['id'];
+        while($row = $result->fetch_assoc()){ 
+        ?>
+
+        <label for="id">ID:</label>
+        <input type="int" name="id" value="<?= $_GET['id'] ?>" readonly>
         <div class="mb-3 mt-3">
         <label for="username">Tên tài khoản:</label>
-        <input type="varchar" class="form-control" id="username" placeholder="Nhập username" name="username">
+        <input type="varchar" class="form-control" id="username" value="<?= $row['username']; ?>" name="username">
         </div>
         <div class="mb-3">
-        <label for="pwd">Mật khẩu:</label>
-        <input type="varchar" class="form-control" placeholder="Nhập password" name="password">
+        <label for="password">Mật khẩu:</label>
+        <input type="varchar" class="form-control" value="<?= $row['password'] ?>" name="password">
         </div>
         <div class="mb-3">
-        <label for="pwd">Họ tên:</label>
-        <input type="varchar" class="form-control" placeholder="Nhập họ tên" name="fullname">
+        <label for="fullname">Họ tên:</label>
+        <input type="varchar" class="form-control" value="<?= $row['fullname']; ?>" name="fullname">
         </div>
         <div class="mb-3">
-        <label for="pwd">Tuổi:</label>
-        <input type="varchar" class="form-control" placeholder="Nhập tuổi" name="age">
+        <label for="age">Tuổi:</label>
+        <input type="varchar" class="form-control" value="<?= $row['age']; ?>" name="age">
         </div>
         <div class="mb-3">
-        <label for="pwd">Số điện thoại:</label>
-        <input type="varchar" class="form-control" placeholder="Nhập số điện thoại" name="sdt">
+        <label for="sdt">Số điện thoại:</label>
+        <input type="varchar" class="form-control" value="<?= $row['sdt']; ?>" name="sdt">
         </div>
         <button type="submit" class="btn btn-primary">Sửa</button>
         <button type="reset" class="btn btn-primary">Nhập lại</button>
+
+        <?php
+        }
+        ?>
     </form>
 </div>
 </body>

@@ -1,9 +1,3 @@
-<?php
-require "../model/connect.php";
-$sql = "SELECT * FROM sanpham";
-$result = $conn->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +9,12 @@ $result = $conn->query($sql);
 </head>
 <body>
 <h2>Thông tin sản phẩm</h2>
-<div class="container mt-3">         
+<div class="container mt-3">
+  <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
+  <a class="btn btn-success" href="http://localhost/web/view/them_sp.php">Thêm</a>         
   <table class="table table-striped">
     <thead class="table-success">
-      <tr>
+      <tr> 
         <th>ID</th>
         <th>Tên sản phẩm</th>
         <th>Giá</th>
@@ -30,7 +26,10 @@ $result = $conn->query($sql);
     <tbody>
     <?php
     require "../model/sanpham.php";
-
+    require "../model/connect.php";
+    $sql = "SELECT * FROM sanpham";
+    $result = $conn->query($sql);
+   
     while($row = $result->fetch_assoc()){
     ?>
       <tr>
@@ -40,8 +39,8 @@ $result = $conn->query($sql);
         <td><?php echo $row["soluong"]; ?></td>
         <td><?php echo $row["diachi"]; ?></td>
         <td>
-          <a href="">Sửa</a>
-          <a href="">Xóa</a>
+          <a href="http://localhost/web/view/sua_sp.php?id=<?=$row['id'];?>">Sửa</a>
+          <a href="http://localhost/web/controller/xoa_sp.php?id=<?=$row['id'];?>">Xóa</a>
         </td>
       </tr>
     <?php

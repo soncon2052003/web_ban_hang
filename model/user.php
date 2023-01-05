@@ -18,14 +18,35 @@ class User{
     public function them_user(){
         $db = new Database;
         $conn = $db->conn();
-        $sql= "INSERT INTO user (username,password,fullname,age,sdt) 
+        $sql = "INSERT INTO user (username,password,fullname,age,sdt) 
             VALUES('$this->username','$this->password','$this->fullname','$this->age','$this->sdt')";
         if($conn->query($sql)===true){
-            echo "Thêm user thành công.";
+            header("Location: http://localhost/web/view/user.php");
         }else{
             echo "Lỗi: " . $sql . "<br>" . $conn->error;
         }
         $conn->close();
+    }
+    public function sua_user($id){
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "UPDATE user SET username='$this->username',password='$this->password',fullname='$this->fullname',
+            age='$this->age', sdt='$this->sdt' WHERE id=$id";
+        if($conn->query($sql)===true){
+            header("Location: http://localhost/web/view/user.php");
+        }else{
+            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        }
+    }
+    public function xoa_user($id){
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "DELETE FROM user WHERE id=$id";
+        if($conn->query($sql)===true){
+            header("Location: http://localhost/web/view/user.php");
+        }else{
+            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 ?>

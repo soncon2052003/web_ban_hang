@@ -15,7 +15,9 @@ $result = $conn->query($sql);
 </head>
 <body>
 <h2>Thông tin người dùng</h2>
-<div class="container mt-3">         
+<div class="container mt-3"> 
+  <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
+  <a class="btn btn-success" href="http://localhost/web/view/register.php">Thêm</a>      
   <table class="table table-striped">
     <thead class="table-success">
       <tr>
@@ -42,8 +44,8 @@ $result = $conn->query($sql);
         <td><?php echo $row["age"]; ?></td>
         <td><?php echo $row["sdt"]; ?></td>
         <td>
-            <a href="http://localhost/web/controller/sua_user.php">Sửa</a>
-            <a href="">Xóa</a>
+            <a href="http://localhost/web/view/sua_user.php?id=<?= $row['id']; ?>">Sửa</a>
+            <a href="http://localhost/web/controller/xoa_user.php?id=<?= $row['id']; ?>">Xóa</a>
         </td>
       </tr>
     <?php
