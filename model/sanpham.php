@@ -32,7 +32,7 @@ class SanPham{
     public function get_image(){
         return $this->image;
     }
-
+  
     public function them_sp(){
         require_once "../model/connect.php";
         $sql = "INSERT INTO sanpham (tensanpham,gia,soluong,diachi,image) 
@@ -54,10 +54,5 @@ class SanPham{
             echo "Lỗi ". $sql ."<br>". $conn->error;
         }
     }
-
-    public function danh_sach_sp() {
-        Helper::Paginate([], 10);
-    }
-
 }
 ?>

@@ -38,20 +38,16 @@
     <tbody>
     <?php
     require_once "../model/connect.php";
+    require_once "../help/helper.php";
+
     //Xu ly phan trang
     if(!isset($_GET['page'])){
       $page = 1;
     }else{
       $page = $_GET['page'];
     }
-    $results_per_page = 4;
-    $page_first_result = ($page-1)*$results_per_page;
-    $sql = "SELECT * FROM sanpham";
-    $result = $conn->query($sql);
-    $number_of_result = mysqli_num_rows($result);
-    $number_of_page = ceil($number_of_result/$results_per_page);
-    
-    $sql = "SELECT * FROM sanpham LIMIT $page_first_result,$results_per_page";
+    $sql = Helper::Paginate('sanpham',4,$page)['sql'];
+    $number_page = Helper::Paginate('sanpham',4,$page)['number_page'];
     $result = $conn->query($sql);
 
     while($row = $result->fetch_assoc()){
@@ -76,13 +72,13 @@
 <ul class="pagination justify-content-center" style="margin:20px 0">
   <li class="page-item"><a class="page-link" href="http://localhost/web/view/sp.php?page=1">First</a></li>
   <?php
-  for($page = 1; $page<= $number_of_page; $page++){
+  for($page = 1; $page<= $number_page; $page++){
   ?>
   <li class="page-item"><a class="page-link" href="http://localhost/web/view/sp.php?page=<?=$page?>"> <?=$page?> </a></li>
   <?php
   }
   ?>
-  <li class="page-item"><a class="page-link" href="http://localhost/web/view/sp.php?page=<?=$number_of_page?>">Last</a></li>
+  <li class="page-item"><a class="page-link" href="http://localhost/web/view/sp.php?page=<?=$number_page?>">Last</a></li>
 </ul>
 </div>
 

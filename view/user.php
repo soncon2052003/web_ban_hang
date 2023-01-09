@@ -1,6 +1,6 @@
 <?php
-  require_once "../model/connect.php";
-  require_once "../help/helper.php";
+  require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'\web\model\connect.php');  
+  require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'\web\help\helper.php');
   $sql = "SELECT * FROM user";
   $result = $conn->query($sql);
 ?>
@@ -40,8 +40,15 @@
       </thead>
       <tbody>
       <?php
-      while($row = $result->fetch_assoc()){
-        $sp[]=$row;
+      if(!isset($_GET['page'])){
+        $page=1;
+      }else{
+        $page=$_GET['page'];
+      }
+      $sql = Helper::Paginate('user',4,$page)['sql'];
+      $number_page = Helper::Paginate('user',4,$page)['number_page'];
+      $result = $conn->query($sql);
+      while($row=$result->fetch_assoc()){
       ?>
         <tr>
           <td><?php echo $row["id"]; ?></td>
@@ -57,11 +64,6 @@
         </tr>
       <?php
       }
-      $new_sp[] = Helper::Paginate($sp,4);
-      var_dump($new_sp);
-      echo "<br>";
-      var_dump($sp);
-      die;
       ?>
       </tbody>
     </table>
