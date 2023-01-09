@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 require "./model/connect.php";
-$sql = "SELECT * FROM sanpham";
+$sql = "SELECT * FROM sanpham LIMIT 6";
 $result = $conn->query($sql);
 ?>
 

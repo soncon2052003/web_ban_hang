@@ -1,5 +1,6 @@
 <?php
 require_once "database.php";
+
 class User{
     public $username;
     public $password;
@@ -14,6 +15,17 @@ class User{
         $this->fullname = $fullname;
         $this->age = $age;
         $this->sdt = $sdt;
+    }
+    public function ds_user(){
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "SELECT * FROM user";
+        $result=$conn->query($sql);
+        $user = [];
+        while($row = $result->fetch_assoc()){
+            $user[] = $row;
+        }
+        return $user;
     }
     public function them_user(){
         $db = new Database;

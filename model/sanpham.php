@@ -1,5 +1,7 @@
 <?php
 require_once "database.php";
+require_once "helper.php";
+
 class SanPham{
     public $tensanpham;
     public $gia;
@@ -51,6 +53,10 @@ class SanPham{
         }else{
             echo "Lỗi ". $sql ."<br>". $conn->error;
         }
+    }
+
+    public function danh_sach_sp() {
+        Helper::Paginate([], 10);
     }
 
 }
