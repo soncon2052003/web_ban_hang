@@ -11,6 +11,7 @@
 <h2>Thông tin sản phẩm</h2>
 
 <div class="container mt-3">
+  <a href="http://localhost/web/quanly.php" class="btn btn-info">Trang quản lý</a> <br><br>
   <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
   <a class="btn btn-success" href="http://localhost/web/view/them_sp.php">Thêm sản phẩm</a>         
 
@@ -37,9 +38,10 @@
     </thead>
     <tbody>
     <?php
+
     require_once "../model/connect.php";
     require_once "../help/helper.php";
-
+    session_start();
     //Xu ly phan trang
     if(!isset($_GET['page'])){
       $page = 1;

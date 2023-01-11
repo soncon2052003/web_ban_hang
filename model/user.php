@@ -30,8 +30,8 @@ class User{
     public function them_user(){
         $db = new Database;
         $conn = $db->conn();
-        $sql = "INSERT INTO user (username,password,fullname,age,sdt) 
-            VALUES('$this->username','$this->password','$this->fullname','$this->age','$this->sdt')";
+        $sql = "INSERT INTO user (username,password,fullname,age,sdt,role) 
+            VALUES('$this->username','$this->password','$this->fullname','$this->age','$this->sdt','user')";
         if($conn->query($sql)===true){
             header("Location: http://localhost/web/view/user.php");
         }else{
@@ -39,6 +39,20 @@ class User{
         }
         $conn->close();
     }
+
+    public function them_admin(){
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "INSERT INTO user (username,password,fullname,age,sdt,role) 
+            VALUES('$this->username','$this->password','$this->fullname','$this->age','$this->sdt','admin')";
+        if($conn->query($sql)===true){
+            header("Location: http://localhost/web/view/user.php");
+        }else{
+            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        }
+        $conn->close();
+    }
+
     public function sua_user($id){
         $db = new Database;
         $conn = $db->conn();

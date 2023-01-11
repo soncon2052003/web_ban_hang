@@ -16,6 +16,7 @@
 <body>
 <h2>Thông tin người dùng</h2>
 <div class="container mt-3"> 
+  <a href="http://localhost/web/quanly.php" class="btn btn-info">Trang quản lý</a> <br><br>
   <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
   <a class="btn btn-success" href="http://localhost/web/view/register.php">Thêm</a>   
   
@@ -35,6 +36,7 @@
           <th>Fullname</th>
           <th>Age</th>
           <th>Sdt</th>
+          <th>Quyền</th>
           <th>Chức năng</th>
         </tr>
       </thead>
@@ -57,6 +59,7 @@
           <td><?php echo $row["fullname"]; ?></td>
           <td><?php echo $row["age"]; ?></td>
           <td><?php echo $row["sdt"]; ?></td>
+          <td><?php echo $row["role"]; ?></td>
           <td>
               <a href="http://localhost/web/view/sua_user.php?id=<?= $row['id']; ?>">Sửa</a>
               <a href="http://localhost/web/controller/xoa_user.php?id=<?= $row['id']; ?>">Xóa</a>
@@ -76,7 +79,7 @@
     <?php
     }
     ?>
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/user.php?page=<?=$number_of_page?>">Last</a></li>
+    <li class="page-item"><a class="page-link" href="http://localhost/web/view/user.php?page=<?=$number_page?>">Last</a></li>
   </ul>
 </div> 
 

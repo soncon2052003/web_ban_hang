@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+session_start();
 require "./model/connect.php";
 $sql = "SELECT * FROM sanpham LIMIT 6";
 $result = $conn->query($sql);
@@ -12,17 +13,16 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container mt-3">
+    <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-success" href="http://localhost/web/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
+    <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://localhost/web/view/login.php"></a>
         <a href="http://localhost/web" class="btn btn-info">Trang chủ</a>
-        <a href="http://localhost/web/view/user.php" class="btn btn-info">Người dùng</a>
         <a href="http://localhost/web/view/sp.php" class="btn btn-info">Sản phẩm</a>
         <a href="http://localhost/web/view/tintuc.php" class="btn btn-info">Tin tức</a>
-        <a href="http://localhost/web/view/login.php" class="btn btn-info">Đăng nhập</a>
-        <a href="http://localhost/web/view/register.php" class="btn btn-info">Đăng ký</a>
     </div>  
-
+    
     <h2 class="text text-success">Một số sản phẩm nổi bật</h2>
     <div class="card-group">
         <?php
@@ -41,7 +41,12 @@ $result = $conn->query($sql);
         <?php
         }
         mysqli_close($conn);
+        
         ?>
+    </div>
+
+    <div>
+
     </div>
 </body>
 </html>

@@ -1,24 +1,16 @@
 <?php
-require '../model/connect.php';
-
-//SESSION
 session_start();
-session_destroy();
-$sql = "SELECT username,password,fullname FROM user";
 
+require '../model/connect.php';
+header('Content-Type: text/html; charset=UTF-8'); //Khai bao dung Tieng Viet
 
+$sql = "SELECT id,username,password,fullname,role FROM user";
 $sql = $conn->query($sql);
 while($row = $sql->fetch_assoc()){
-    $_SESSION[] = $row;
+    $user[] = $row;
 }
-
-//Khai báo utf-8 để hiển thị được tiếng việt
-header('Content-Type: text/html; charset=UTF-8');
-
 //Xử lý đăng nhập
-$so_ptu = count($_SESSION);
-var_dump($so_ptu);
-
+$so_ptu = count($user);
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -29,9 +21,20 @@ if (!$username || !$password){
 
 for($i=0;$i<$so_ptu;$i++)
 {
-    if($_SESSION[$i]['username']==$username){
-        if($_SESSION[$i]['password']==$password){
-            header("Location: http://localhost/web/");
+    if($user[$i]['username']==$username){
+        if($user[$i]['password']==$password){
+            $_SESSION = $user[$i];
+            //Xu ly nho mat khau
+            if(isset($_POST['remember'])){
+                setcookie('user',$username,time()+3600,'/','',0,0);
+                setcookie('pass',$password,time()+3600,'/','',0,0);
+            }
+            //Chuyen huong trang
+            if($user[$i]['role']=='admin'){
+                header("Location: http://localhost/web/quanly.php?id='<?=$user[$i]['id'];?>'");
+            }else{
+                header("Location: http://localhost/web/index.php?id='<?=$user[$i]['id'];?>'");
+            } 
         }
     }
 }

@@ -14,6 +14,7 @@ require "../model/connect.php";
 </head>
 <body>
     <h2>Xin chào! Chào bạn đến với trang tin tức.</h2>
+    <a href="http://localhost/web/quanly.php" class="btn btn-info">Trang quản lý</a> <br><br>
     <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
     <a class="btn btn-success" href="http://localhost/web/view/them_tintuc.php">Thêm tin tức</a>
     <?php

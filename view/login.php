@@ -14,15 +14,17 @@
     <form action="../controller/login.php" method="post">
         <div class="mb-3 mt-3">
         <label for="username">Tên tài khoản:</label>
-        <input type="text" class="form-control" placeholder="Nhập username" name="username">
+        <input type="text" class="form-control" placeholder="Nhập username" name="username"
+        value="<?php if(isset($_COOKIE['user'])){echo $_COOKIE['user'];} ?>">
         </div>
         <div class="mb-3">
         <label for="pwd">Mật khẩu:</label>
-        <input type="password" class="form-control" placeholder="Nhập password" name="password">
+        <input type="password" class="form-control" placeholder="Nhập password" name="password"
+        value="<?php if(isset($_COOKIE['pass'])){echo $_COOKIE['pass'];} ?>">
         </div>
         <div class="form-check mb-3">
         <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="remember"> Nhớ mật khẩu
+            <input class="form-check-input" type="checkbox" name="remember">Nhớ mật khẩu
         </label>
         </div>
         <button type="submit" class="btn btn-primary">Đăng nhập</button>
