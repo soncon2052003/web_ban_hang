@@ -1,6 +1,6 @@
 <?php
-  require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'\web\model\connect.php');  
-  require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'\web\help\helper.php');
+  require_once ("../model/connect.php");  
+  require_once ("../help/helper.php");
   $sql = "SELECT * FROM user";
   $result = $conn->query($sql);
 ?>
@@ -70,17 +70,13 @@
       ?>
       </tbody>
     </table>
-  <ul class="pagination justify-content-center" style="margin:20px 0">
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/user.php?page=1">First</a></li>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+    
     <?php
-    for($page = 1; $page<= $number_page; $page++){
+    $url = "http://localhost/web/view/user.php";
+    include "pagination.php";
     ?>
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/user.php?page=<?=$page?>"> <?=$page?> </a></li>
-    <?php
-    }
-    ?>
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/user.php?page=<?=$number_page?>">Last</a></li>
-  </ul>
+
 </div> 
 
 </body>

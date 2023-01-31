@@ -31,9 +31,9 @@ for($i=0;$i<$so_ptu;$i++)
             }
             //Chuyen huong trang
             if($user[$i]['role']=='admin'){
-                header("Location: http://localhost/web/quanly.php?id='<?=$user[$i]['id'];?>'");
+                header('Location: http://web.test/quanly.php?id=' . $user[$i]['id']);
             }else{
-                header("Location: http://localhost/web/index.php?id='<?=$user[$i]['id'];?>'");
+                header("Location: http://web.test/index.php?id=" . $user[$i]['id']);
             } 
         }
     }

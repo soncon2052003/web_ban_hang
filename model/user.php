@@ -74,5 +74,7 @@ class User{
             echo "Lỗi: " . $sql . "<br>" . $conn->error;
         }
     }
+
+    
 }
 ?>
