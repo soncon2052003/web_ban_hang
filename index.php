@@ -3,32 +3,6 @@
 require_once "./model/header.php";
 require "./model/connect.php";
 require "./model/sanpham.php";
-
-if(isset($_POST['add'])){
-    if(isset($_SESSION['cart'])){
-        $item_array_id = array_column($_SESSION['cart'],"product_id");
-        if(in_array($_POST['product_id'],$item_array_id)){
-            echo "<script>window.location = 'index.php'</script>";
-        }else{
-            $count = count($_SESSION['cart']);
-            $item = array(
-                'product_id' => $_POST['product_id']
-            ); 
-
-            $_SESSION['cart'][$count] = $item;        
-        }
-    }else{
-        $item = array(
-            "product_id" => $_POST['product_id']
-        );
-
-        //create new session variable
-        $_SESSION['cart'][0] = $item;
-    }
-}
-
-$sql = "SELECT * FROM sanpham LIMIT 6";
-$result = $conn->query($sql);
 ?>
 
 <html>
@@ -51,9 +25,12 @@ $result = $conn->query($sql);
     
     <div class="container">
         <div class="row text-center py-5">           
-            <?php
+            <?php            
+            $sql = "SELECT * FROM sanpham";
+            $result = $conn->query($sql);
             while($row = $result->fetch_assoc()){
-                card_sp($row['image'],$row['tensanpham'],$row['gia'],$row['soluong'],$row['diachi'],$row['id']);
+                //card_sp($row['image'],$row['tensanpham'],$row['gia'],$row['soluong'],$row['diachi'],$row['id']);
+                include "./card_sp.php";
             } 
             mysqli_close($conn);
             ?>
@@ -61,4 +38,31 @@ $result = $conn->query($sql);
     </div>
 </body>
 </html>
+
+<?php
+if(isset($_POST['add'])){
+    if(isset($_SESSION['cart'])){
+        $item_array_id = array_column($_SESSION['cart'],"product_id");
+        if(in_array($_POST['product_id'],$item_array_id)){
+            echo "<script>window.location = 'index.php'</script>";
+        }else{
+            $count = count($_SESSION['cart']);
+            $item = array(
+                'product_id' => $_POST['product_id'],
+                'count' => 1
+            ); 
+
+            $_SESSION['cart'][$count] = $item;        
+        }
+    }else{
+        $item = array(
+            "product_id" => $_POST['product_id'],
+            'count' => 1
+        );
+
+        //create new session variable
+        $_SESSION['cart'][0] = $item;
+    }
+}
+?>
 

@@ -3,7 +3,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php
+<?php 
 class Helper {
     public static function Paginate($sql_name, $limit_a_page,$page,$key,$sort_option,$search){
         require_once ('..\model\database.php');
@@ -23,6 +23,9 @@ class Helper {
         }else if($sql_name=="user"){
             $condition .= "id LIKE '%$search%' or username LIKE '%$search%' or password LIKE '%$search%' or 
             fullname LIKE '%$search%' or age LIKE '%$search%' or sdt LIKE '%$search%'";
+        }else if($sql_name="tintuc"){
+            $condition .= "id LIKE '%$search%' or title LIKE '%$search%' or short LIKE '%$search%' or 
+            content LIKE '%$search%'";
         }
 
         if($condition != ""){

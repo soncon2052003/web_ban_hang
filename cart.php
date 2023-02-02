@@ -3,17 +3,6 @@
 include "./model/header.php";
 include "./model/sanpham.php";
 include_once "./help/helper.php";
-
-if(isset($_POST['remove'])){
-    if($_GET['action']=='remove'){
-        foreach($_SESSION['cart'] as $key=>$value){
-            if($value['product_id']==$_GET['id']){
-                unset($_SESSION['cart'][$key]);
-                echo "<script>window.location='cart.php'</script>";
-            }
-        }
-    }
-}
 ?>
 
 <html>
@@ -40,19 +29,20 @@ if(isset($_POST['remove'])){
                     <?php
                     if(isset($_SESSION['cart'])){
                         $total = 0;
-                        $product_id = array_column($_SESSION['cart'],"product_id");
+                        $product_id = array_column($_SESSION['cart'],"product_id");//become an array
                         $result = Helper::getData('sanpham');
                         while($row = $result->fetch_assoc()){
                             foreach($product_id as $id){
                                 if($row['id']==$id){
-                                    cartElement($row['id'],$row['tensanpham'],$row['image'],$row['gia'],$row['diachi']);
-                                    $total = $total + (int)$row['gia'];
+                                    include "./cart_thanhtoan.php";
+                                    $total = $total + (int)$row['gia']*$_SESSION['cart'][$chiso]['count'];
                                 }
                             }
                         }
                     }else{
                         echo "<h5>Cart is empty</h5>";die;
                     }
+
                     ?>
                 </div>
             </div>
@@ -87,3 +77,17 @@ if(isset($_POST['remove'])){
     </div>
 </body>
 </html>
+
+<?php
+if(isset($_POST['remove'])){
+    if($_GET['action']=='remove'){
+        foreach($_SESSION['cart'] as $key=>$value){
+            if($value['product_id']==$_GET['id']){
+                unset($_SESSION['cart'][$key]);
+                echo "<script>window.location='cart.php'</script>";
+            }
+        }
+    }
+}
+
+?>

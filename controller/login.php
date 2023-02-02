@@ -4,7 +4,7 @@ session_start();
 require '../model/connect.php';
 header('Content-Type: text/html; charset=UTF-8'); //Khai bao dung Tieng Viet
 
-$sql = "SELECT id,username,password,fullname,role FROM user";
+$sql = "SELECT * FROM user";
 $sql = $conn->query($sql);
 while($row = $sql->fetch_assoc()){
     $user[] = $row;

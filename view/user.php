@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require_once ("../model/connect.php");  
   require_once ("../help/helper.php");
   $sql = "SELECT * FROM user";
@@ -17,9 +18,9 @@
 <body>
 <h2>Thông tin người dùng</h2>
 <div class="container mt-3"> 
-  <a href="http://localhost/web/quanly.php" class="btn btn-info">Trang quản lý</a> <br><br>
-  <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
-  <a class="btn btn-success" href="http://localhost/web/view/register.php">Thêm</a>   
+  <a href="http://web.test/quanly.php?id=<?= $_SESSION['id'] ?>" class="btn btn-info">Trang quản lý</a> <br><br>
+  <a class="btn btn-success" href="http://web.test?id=<?= $_SESSION['id'] ?>">Về trang chủ</a>
+  <a class="btn btn-success" href="http://web.test/view/register.php">Thêm</a>   
   
   <br><br>
   
@@ -98,8 +99,8 @@
           <td><?php echo $row["sdt"]; ?></td>
           <td><?php echo $row["role"]; ?></td>
           <td>
-              <a href="http://localhost/web/view/sua_user.php?id=<?= $row['id']; ?>">Sửa</a>
-              <a href="http://localhost/web/controller/xoa_user.php?id=<?= $row['id']; ?>">Xóa</a>
+              <a href="http://web.test/view/sua_user.php?id=<?= $row['id']; ?>">Sửa</a>
+              <a href="http://web.test/controller/xoa_user.php?id=<?= $row['id']; ?>">Xóa</a>
           </td>
         </tr>
       <?php
@@ -110,7 +111,7 @@
     <ul class="pagination justify-content-center" style="margin:20px 0">
     
     <?php
-    $url = "http://localhost/web/view/user.php?sort=".  $_GET['sort'] .  "&search=" . $search . "&";
+    $url = "http://web.test/view/user.php?sort=".  $_GET['sort'] .  "&search=" . $search . "&";
     include "pagination.php";
     ?>
 

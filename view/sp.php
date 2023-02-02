@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,8 @@
 <h2>Thông tin sản phẩm</h2>
 
 <div class="container mt-3">
-  <a href="http://localhost/web/quanly.php" class="btn btn-info">Trang quản lý</a> <br><br>
-  <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
-  <a class="btn btn-success" href="http://localhost/web/view/them_sp.php">Thêm sản phẩm</a>         
+  <a href="http://web.test/quanly.php?id=<?= $_SESSION['id'] ?>" class="btn btn-info">Trang quản lý</a> <br><br>
+  <a class="btn btn-success" href="http://web.test/view/them_sp.php">Thêm sản phẩm</a>         
   <br><br>
 
   <form action="" method="GET">
@@ -63,7 +63,6 @@
 
     require_once "../model/connect.php";
     require_once "../help/helper.php";
-    session_start();
     //Xu ly sap xep
     if(!isset($_GET['sort'])){ $key = "tensanpham"; $option = "ASC";}
     else{
@@ -102,8 +101,8 @@
         <td><?php echo $row["diachi"]; ?></td>
         <td><?php echo $row["image"]; ?></td>
         <td>
-          <a href="http://localhost/web/view/sua_sp.php?id=<?=$row['id'];?>">Sửa</a>
-          <a href="http://localhost/web/controller/xoa_sp.php?id=<?=$row['id'];?>">Xóa</a>
+          <a href="http://web.test/view/sua_sp.php?id=<?=$row['id'];?>">Sửa</a>
+          <a href="http://web.test/controller/xoa_sp.php?id=<?=$row['id'];?>">Xóa</a>
         </td>
       </tr>
     <?php

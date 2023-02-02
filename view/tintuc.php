@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,52 +11,84 @@
 </head>
 <body>
     <h2>Xin chào! Chào bạn đến với trang tin tức.</h2>
-    <a href="http://localhost/web/quanly.php" class="btn btn-info">Trang quản lý</a>
-    <a class="btn btn-success" href="http://localhost/web">Về trang chủ</a>
-    <a class="btn btn-success" href="http://localhost/web/view/them_tintuc.php">Thêm tin tức</a>
+    <?php if($_SESSION['role']=="admin"){ ?>
+    <a href="http://web.test/quanly.php" class="btn btn-info">Trang quản lý</a>
+    <a class="btn btn-success" href="http://web.test/view/them_tintuc.php">Thêm tin tức</a>
+    <?php }else{ ?>
+    <a class="btn btn-success" href="http://web.test?id=<?= $_SESSION['id'] ?>">Về trang chủ</a>
+    <?php } ?>
+
+    <form action="" method="GET">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <select name="sort" class="form-control">
+            <option value="">--Sắp xếp theo--</option>
+            <option value="moinhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="moinhat"){echo "selected";} ?> >Mới nhất</option>
+            <option value="cunhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="z-a"){echo "selected";} ?> >Cũ nhất</option>
+          </select>
+          <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Sort</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <div class="form-outline">
+        <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </form>
+
     <?php
+    $url = "http://web.test/view/tintuc.php?";
     require_once "../help/helper.php";
     require_once "../model/connect.php";
-    if(!isset($_GET['page'])){
-        $page=1;
-    }else{
-        $page=$_GET['page'];
+    //Xu ly phan trang
+    if(!isset($_GET['page'])){ $page=1; }
+    else{ $page=$_GET['page']; }     
+    //Xu ly sap xep
+    if(!isset($_GET['sort'])){$key = "id"; $option="ASC";}
+    else{
+        if($_GET['sort']=="cunhat"){$key = "id"; $option = "DESC";}
+        else{$key = "id"; $option="ASC";}
     }
-    $sql = Helper::Paginate('tintuc',2,$page)['sql'];
-    $number_page = Helper::Paginate('tintuc',2,$page)['number_page'];
+    //Xu ly tim kiem
+    if(!isset($_GET['search'])){
+        $search="";
+    }else{
+        $search=$_GET['search'];
+    }
+    $sql = Helper::Paginate('tintuc',2,$page,$key,$option,$search)['sql'];
+    $number_page = Helper::Paginate('tintuc',2,$page,$key,$option,$search)['number_page'];
     $result = $conn->query($sql);
 
     while($row = $result->fetch_assoc()){
     ?>
     <div class="card mb-3" style="max-width: 720px;">
         <div class="row g-0">
-            <div class="col-md-4">
-            <img src="<?php echo $row['img']; ?>" class="img-fluid rounded-start" alt="...">
-            </div>
+            <a href="http://web.test/view/tintuc.php?id=<?= $row['id'] ?>" class="col-md-4">
+                <img src="<?php echo $row['img']; ?>" class="img-fluid rounded-start" alt="...">
+            </a>
             <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title"><?php echo $row["title"]; ?></h5>
+                <a href="http://web.test/view/tintuc.php?id=<?= $row['id'] ?>"><h5 class="text text-success"><?php echo $row["title"]; ?></h5></a>
                 <p class="card-text"><?php echo $row["short"]; ?></p>
                 <p class="card-text"><small class="text-muted"><?php echo "Cập nhật: ".$row["dateCreate"]; ?></small></p>
-                <a href="http://localhost/web/view/sua_tintuc.php?id=<?= $row['id'] ?>">Sửa</a>
-                <a href="http://localhost/web/controller/xoa_tintuc.php?id=<?= $row['id'] ?>" class="card-link">Xóa</a>
+    <?php
+        if($_SESSION['role']=="admin"){ 
+    ?>
+                <a href="http://web.test/view/sua_tintuc.php?id=<?= $row['id'] ?>">Sửa</a>
+                <a href="http://web.test/controller/xoa_tintuc.php?id=<?= $row['id'] ?>" class="card-link">Xóa</a>
+    <?php } ?>
             </div>
             </div>
         </div>
     </div>
     <?php
     }
-    $conn->close();
+    include "./pagination.php";
     ?>
-    <ul class="pagination justify-content-center" style="margin:20px 0">
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/tintuc.php?page=1">First</a></li>
-    <?php
-    for($page = 1; $page<= $number_page; $page++){
-    ?>
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/tintuc.php?page=<?=$page?>"> <?=$page?> </a></li>
-    <?php
-    }
-    ?>
-    <li class="page-item"><a class="page-link" href="http://localhost/web/view/tintuc.php?page=<?=$number_page?>">Last</a></li>
-    </ul>
 </body>   
