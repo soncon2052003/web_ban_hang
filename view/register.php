@@ -11,7 +11,7 @@
 
 <div class="container mt-3">
     <h2>Đăng ký tài khoản mới</h2>
-    <form action="http://localhost/web/controller/register.php" method="post">
+    <form action="http://web.test/controller/user.php?action=add" method="post">
         <div class="mb-3 mt-3">
         <label for="username">Tên tài khoản:</label>
         <input type="varchar" class="form-control" id="username" placeholder="Nhập username" name="username">

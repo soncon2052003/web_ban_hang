@@ -19,7 +19,7 @@
     while($row = $result->fetch_assoc()){
     ?>
 
-    <form action="http://localhost/web/controller/sua_sp.php" method="post">
+    <form action="http://web.test/controller/sanpham.php?action=fix" method="post">
         ID:<input type="varchar" class="form-control" name="id" value="<?= $row['id']?>" readonly>
         <div class="mb-3 mt-3">
         <label for="tensanpham">Tên sản phẩm:</label>

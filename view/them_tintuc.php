@@ -11,7 +11,7 @@
 
 <div class="container mt-3">
     <h2>Thêm tin tức</h2>
-    <form action="http://localhost/web/controller/them_tintuc.php" method="post">
+    <form action="http://web.test/controller/tintuc.php?action=add" method="post">
         <div class="mb-3 mt-3">
         <label for="title">Title:</label>
         <input type="varchar" class="form-control" name="title">

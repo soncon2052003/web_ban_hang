@@ -28,7 +28,7 @@
                             $count = count($_SESSION['cart']);
                             echo "<span id=\"cart_count\" class=\"btn btn-sm text-warning bg-light rounded-circle\">$count</span>";
                         }else{
-                            echo "<span id=\"cart_count\" class=\"text-success bg-light\">0</span>";
+                            echo "<span id=\"cart_count\" class=\"btn btn-sm text-warning bg-light rounded-circle\">0</span>";
                         }                        
                         ?>
 

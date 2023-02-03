@@ -101,8 +101,8 @@
         <td><?php echo $row["diachi"]; ?></td>
         <td><?php echo $row["image"]; ?></td>
         <td>
-          <a href="http://web.test/view/sua_sp.php?id=<?=$row['id'];?>">Sửa</a>
-          <a href="http://web.test/controller/xoa_sp.php?id=<?=$row['id'];?>">Xóa</a>
+          <a href="http://web.test/view/sua_sp.php?action=fix&id=<?=$row['id'];?>">Sửa</a>
+          <a href="http://web.test/controller/sanpham.php?action=delete&id=<?=$row['id'];?>">Xóa</a>
         </td>
       </tr>
     <?php

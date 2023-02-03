@@ -17,7 +17,7 @@ $result = $conn->query($sql);
 
 <div class="container mt-3">
     <h2>Sửa thông tin người dùng</h2>
-    <form action="http://localhost/web/controller/sua_user.php" method="post">
+    <form action="http://web.test/controller/user.php?action=fix" method="post">
         <?php
         $id = $_GET['id'];
         while($row = $result->fetch_assoc()){ 

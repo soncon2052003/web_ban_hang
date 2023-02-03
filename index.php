@@ -23,8 +23,8 @@ require "./model/sanpham.php";
         <a href="http://web.test/view/tintuc.php" class="btn btn-info">Tin tức</a>
     </div>  
     
-    <div class="wrap-box">
-        <div class="row">           
+    <div class="container">
+        <div class="row text-center py-5">           
             <?php            
             $sql = "SELECT * FROM sanpham";
             $result = $conn->query($sql);

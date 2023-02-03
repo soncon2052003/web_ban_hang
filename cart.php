@@ -19,35 +19,33 @@ include_once "./help/helper.php";
     <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-success" href="http://web.test/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
     <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://web.test/controller/logout.php"></a>
 
-    <div class="container-fluid">
-        <div class="row px-5">
-            <div class="col-md-7">
-                <div class="shopping-cart">
-                    <h6>Giỏ hàng</h6>
-                    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="shopping-cart">
+                <h6>Giỏ hàng</h6>
+                <hr>
 
-                    <?php
-                    if(isset($_SESSION['cart'])){
-                        $total = 0;
-                        $product_id = array_column($_SESSION['cart'],"product_id");//become an array
-                        $result = Helper::getData('sanpham');
-                        while($row = $result->fetch_assoc()){
-                            foreach($product_id as $id){
-                                if($row['id']==$id){
-                                    include "./cart_thanhtoan.php";
-                                    $total = $total + (int)$row['gia']*$_SESSION['cart'][$chiso]['count'];
-                                }
+                <?php
+                if(isset($_SESSION['cart'])){
+                    $total = 0;
+                    $product_id = array_column($_SESSION['cart'],"product_id");//become an array
+                    $result = Helper::getData('sanpham');
+                    while($row = $result->fetch_assoc()){
+                        foreach($product_id as $id){
+                            if($row['id']==$id){
+                                include "./cart_thanhtoan.php";
+                                $total = $total + (int)$row['gia']*$_SESSION['cart'][$chiso]['count'];
                             }
                         }
-                    }else{
-                        echo "<h5>Cart is empty</h5>";die;
                     }
+                }else{
+                    echo "<h5>Cart is empty</h5>";die;
+                }
 
-                    ?>
-                </div>
+                ?>
             </div>
         </div>
-        <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
+        <div class="col-md-6" style="background-color:aliceblue;">
             <div class="pt-4">
                 <h6>TỔNG THANH TOÁN</h6>
                 <hr>
@@ -56,7 +54,7 @@ include_once "./help/helper.php";
                         <?php
                         if(isset($_SESSION['cart'])){
                             $count = count($_SESSION['cart']);
-                            echo "<h6>Giá ($count sản phẩm)</h6>";
+                            echo "<h6>Giá ($count sản phẩm)</h6>";   
                         }else{
                             echo "<h6>Giá (0 sản phẩm)</h6>";
                         }
@@ -72,6 +70,7 @@ include_once "./help/helper.php";
                         <h6><?= $total ?> đ</h6>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-primary">Thanh toán</button>
             </div>
         </div>
     </div>
@@ -79,15 +78,17 @@ include_once "./help/helper.php";
 </html>
 
 <?php
-if(isset($_POST['remove'])){
-    if($_GET['action']=='remove'){
-        foreach($_SESSION['cart'] as $key=>$value){
-            if($value['product_id']==$_GET['id']){
-                unset($_SESSION['cart'][$key]);
-                echo "<script>window.location='cart.php'</script>";
-            }
-        }
+if(isset($_POST['remove'])){  
+    $id = $_POST['id_sp_ss']; 
+    unset($_SESSION['cart'][$id]);
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
+}
+if(isset($_POST['minus']) && isset($_POST['id_sp_ss'])){
+    if($_SESSION['cart'][$_POST['id_sp_ss']]['count']>1){
+        $_SESSION['cart'][$_POST['id_sp_ss']]['count'] -= 1;
     }
 }
-
+if(isset($_POST['plus']) && isset($_POST['id_sp_ss'])){
+    $_SESSION['cart'][$_POST['id_sp_ss']]['count'] += 1;
+}
 ?>

@@ -11,7 +11,7 @@
 
 <div class="container mt-3">
     <h2>Thêm sản phẩm</h2>
-    <form action="http://localhost/web/controller/them_sp.php" method="post">
+    <form action="http://localhost/web/controller/sanpham.php?action=add" method="post">
         <div class="mb-3 mt-3">
         <label for="tensanpham">Tên sản phẩm:</label>
         <input type="varchar" class="form-control" id="username" name="tensanpham">

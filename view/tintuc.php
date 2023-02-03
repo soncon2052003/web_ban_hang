@@ -81,7 +81,7 @@
         if($_SESSION['role']=="admin"){ 
     ?>
                 <a href="http://web.test/view/sua_tintuc.php?id=<?= $row['id'] ?>">Sửa</a>
-                <a href="http://web.test/controller/xoa_tintuc.php?id=<?= $row['id'] ?>" class="card-link">Xóa</a>
+                <a href="http://web.test/controller/tintuc.php?action=delete&id=<?= $row['id'] ?>" class="card-link">Xóa</a>
     <?php } ?>
             </div>
             </div>

@@ -1,6 +1,6 @@
-<div class="lg-1-4 md-1-3 sm-1-2">
+<div class="col-md-3 my-3 my-md-0">
     <form action="http://web.test/index.php" method="post">
-        <div class="card shadow">  
+        <div class="card header">  
             <a href="http://web.test/product.php?id=<?= $row['id'] ?>">
                 <img src="<?= $row['image'] ?>" alt="" class="img-fluid">
             </a>
