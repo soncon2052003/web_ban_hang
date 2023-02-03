@@ -23,8 +23,8 @@ require "./model/sanpham.php";
         <a href="http://web.test/view/tintuc.php" class="btn btn-info">Tin tức</a>
     </div>  
     
-    <div class="container">
-        <div class="row text-center py-5">           
+    <div class="wrap-box">
+        <div class="row">           
             <?php            
             $sql = "SELECT * FROM sanpham";
             $result = $conn->query($sql);
@@ -32,7 +32,7 @@ require "./model/sanpham.php";
                 //card_sp($row['image'],$row['tensanpham'],$row['gia'],$row['soluong'],$row['diachi'],$row['id']);
                 include "./card_sp.php";
             } 
-            mysqli_close($conn);
+            mysqli_close($conn); 
             ?>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-6 my-3 my-md-0">
+<div class="lg-1-4 md-1-3 sm-1-2">
     <form action="http://web.test/index.php" method="post">
         <div class="card shadow">  
             <a href="http://web.test/product.php?id=<?= $row['id'] ?>">
