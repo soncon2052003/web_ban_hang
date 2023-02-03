@@ -31,3 +31,12 @@
         ?>
     </body>
 </html>
+
+<p class=" h3 text text-primary">CẢM NHẬN CỦA NGƯỜI MUA</p>
+<?php
+$sql1 = "SELECT * FROM comment";
+$result1 = $conn->query($sql1);
+while($row = $result1->fetch_assoc()){
+    include "cart_comment.php";
+}
+?>
