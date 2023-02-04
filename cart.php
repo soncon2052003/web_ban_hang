@@ -77,18 +77,3 @@ include_once "./help/helper.php";
 </body>
 </html>
 
-<?php
-if(isset($_POST['remove'])){  
-    $id = $_POST['id_sp_ss']; 
-    unset($_SESSION['cart'][$id]);
-    $_SESSION['cart'] = array_values($_SESSION['cart']);
-}
-if(isset($_POST['minus']) && isset($_POST['id_sp_ss'])){
-    if($_SESSION['cart'][$_POST['id_sp_ss']]['count']>1){
-        $_SESSION['cart'][$_POST['id_sp_ss']]['count'] -= 1;
-    }
-}
-if(isset($_POST['plus']) && isset($_POST['id_sp_ss'])){
-    $_SESSION['cart'][$_POST['id_sp_ss']]['count'] += 1;
-}
-?>

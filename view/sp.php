@@ -19,29 +19,26 @@
 
   <form action="" method="GET">
     <div class="row">
-      <div class="col-md-4">
-        <div class="input-group mb-3">
-          <select name="sort" class="form-control">
-            <option value="">--Sắp xếp theo--</option>
-            <option value="a-z" <?php if(isset($_GET['sort']) && $_GET['sort']=="a-z"){echo "selected";} ?> >A-Z</option>
-            <option value="z-a" <?php if(isset($_GET['sort']) && $_GET['sort']=="z-a"){echo "selected";} ?> >Z-A</option>
-            <option value="moinhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="moinhat"){echo "selected";} ?> >Mới nhất</option>
-            <option value="cunhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="cunhat"){echo "selected";} ?> >Cũ nhất</option>
-            <option value="giacao" <?php if(isset($_GET['sort']) && $_GET['sort']=="giacao"){echo "selected";} ?> >Giá cao</option>
-            <option value="giathap" <?php if(isset($_GET['sort']) && $_GET['sort']=="giathap"){echo "selected";} ?> >Giá thấp</option>
-          </select>
-          <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Sort</button>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+            <select name="sort" class="form-control">
+                <option value="">--Sắp xếp theo--</option>
+                <option value="a-z" <?php if(isset($_GET['sort']) && $_GET['sort']=="a-z"){echo "selected";} ?> >A-Z</option>
+                <option value="z-a" <?php if(isset($_GET['sort']) && $_GET['sort']=="z-a"){echo "selected";} ?> >Z-A</option>
+                <option value="moinhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="moinhat"){echo "selected";} ?> >Mới nhất</option>
+                <option value="cunhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="cunhat"){echo "selected";} ?> >Cũ nhất</option>
+                <option value="giacao" <?php if(isset($_GET['sort']) && $_GET['sort']=="giacao"){echo "selected";} ?> >Giá cao</option>
+                <option value="giathap" <?php if(isset($_GET['sort']) && $_GET['sort']=="giathap"){echo "selected";} ?> >Giá thấp</option>
+            </select>
+            <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Sort</button>
+            </div>
         </div>
-      </div>
-    </div>
-    
-    <div class="input-group">
-      <div class="form-outline">
-        <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
-      </div>
-      <button type="submit" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-      </button>
+        <div class="col-md-8">
+            <div class="input-group mb-3">
+                <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
     </div>
   </form>
 
@@ -64,7 +61,7 @@
     require_once "../model/connect.php";
     require_once "../help/helper.php";
     //Xu ly sap xep
-    if(!isset($_GET['sort'])){ $key = "tensanpham"; $option = "ASC";}
+    if(!isset($_GET['sort'])){ $_GET['sort']="a-z"; $key = "tensanpham"; $option = "ASC";}
     else{
       if($_GET['sort']=="a-z"){$key = "tensanpham"; $option = "ASC";}
       else if($_GET['sort']=="z-a"){$key = "tensanpham"; $option = "DESC";}

@@ -6,7 +6,6 @@
 <?php 
 class Helper {
     public static function Paginate($sql_name, $limit_a_page,$page,$key,$sort_option,$search){
-        require_once ('..\model\database.php');
         $db = new Database;
         $conn = $db->conn();
 

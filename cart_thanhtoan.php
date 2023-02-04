@@ -1,4 +1,4 @@
-<form action="./cart.php" method="post" class="cart-items">
+<form action="http://web.test/controller/cart.php" method="post" class="cart-items">
     <div class="border rounded">
         <div class="row bg-white">
             <a href="" class="col-md-3 pl-0">

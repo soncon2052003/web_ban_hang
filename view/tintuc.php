@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <h2>Xin chào! Chào bạn đến với trang tin tức.</h2>
@@ -18,6 +19,7 @@
     <a class="btn btn-success" href="http://web.test?id=<?= $_SESSION['id'] ?>">Về trang chủ</a>
     <?php } ?>
 
+    <hr>
     <form action="" method="GET">
     <div class="row">
       <div class="col-md-4">
@@ -30,15 +32,12 @@
           <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Sort</button>
         </div>
       </div>
-    </div>
-    
-    <div class="input-group">
-      <div class="form-outline">
-        <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-      </button>
     </div>
   </form>
 
