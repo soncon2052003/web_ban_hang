@@ -2,7 +2,7 @@
     <form action="http://web.test/controller/cart.php" method="post">
         <div class="card header">  
             <a href="http://web.test/product.php?id=<?= $row['id'] ?>">
-                <img src="<?= $row['image'] ?>" alt="" class="img-fluid">
+                <img src="<?= $row['image'] ?>" alt="icon cua to" class="img-fluid" height="200">
             </a>
             <div class="card-body">
                 <h5 class="card-title"><?= $row['tensanpham'] ?></h5>

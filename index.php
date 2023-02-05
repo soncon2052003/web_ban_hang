@@ -17,42 +17,54 @@ require_once "./help/helper.php";
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-success" href="http://web.test/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
-        <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://web.test/controller/logout.php"></a>
-        <a href="http://web.test" class="btn btn-info">Trang chủ</a>
-        <a href="http://web.test/view/tintuc.php" class="btn btn-info">Tin tức</a>
-    </div>  
+    <div class="row">     
+        <div class="col-md-6">
+            <a href="http://web.test" class="btn btn-info">Trang chủ</a>
+            <a href="http://web.test/view/tintuc.php" class="btn btn-info">Tin tức</a>
+        </div>
+        <?php if(!isset($_SESSION['fullname'])){?>     
+        <div class="col-md-6">
+            <a class="btn btn-info fa-pull-right" href="http://web.test/view/login.php">Đăng nhập</a>
+            <a class="btn btn-info fa-pull-right" href="http://web.test/view/register.php">Đăng ký</a>
+        </div>
+        <?php }else{ ?>       
+        <div class="col-md-6">
+            <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-success" href="http://web.test/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
+            <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://web.test/controller/logout.php"></a>
+        </div>
+        <?php } ?>
+    </div> 
+
     <hr>
-    <form action="./controller/function.php" method="GET">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="input-group mb-3">
-            <select name="sort" class="form-control">
-                <option value="">--Sắp xếp theo--</option>
-                <option value="a-z" <?php if(isset($_GET['sort']) && $_GET['sort']=="a-z"){echo "selected";} ?> >A-Z</option>
-                <option value="z-a" <?php if(isset($_GET['sort']) && $_GET['sort']=="z-a"){echo "selected";} ?> >Z-A</option>
-                <option value="moinhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="moinhat"){echo "selected";} ?> >Mới nhất</option>
-                <option value="cunhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="cunhat"){echo "selected";} ?> >Cũ nhất</option>
-                <option value="giacao" <?php if(isset($_GET['sort']) && $_GET['sort']=="giacao"){echo "selected";} ?> >Giá cao</option>
-                <option value="giathap" <?php if(isset($_GET['sort']) && $_GET['sort']=="giathap"){echo "selected";} ?> >Giá thấp</option>
-            </select>
-            <button type="submit" class="input-group-text btn btn-primary">Sort</button>
+    <form action="./index.php" method="GET">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                <select name="sort" class="form-control">
+                    <option value="">--Sắp xếp theo--</option>
+                    <option value="a-z" <?php if(isset($_GET['sort']) && $_GET['sort']=="a-z"){echo "selected";} ?> >A-Z</option>
+                    <option value="z-a" <?php if(isset($_GET['sort']) && $_GET['sort']=="z-a"){echo "selected";} ?> >Z-A</option>
+                    <option value="moinhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="moinhat"){echo "selected";} ?> >Mới nhất</option>
+                    <option value="cunhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="cunhat"){echo "selected";} ?> >Cũ nhất</option>
+                    <option value="giacao" <?php if(isset($_GET['sort']) && $_GET['sort']=="giacao"){echo "selected";} ?> >Giá cao</option>
+                    <option value="giathap" <?php if(isset($_GET['sort']) && $_GET['sort']=="giathap"){echo "selected";} ?> >Giá thấp</option>
+                </select>
+                <button type="submit" class="input-group-text btn btn-primary">Sort</button>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="input-group mb-3">
-                <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
-    </div>
     </form>
     <div class="container">
         <div class="row text-center py-5">           
             <?php
             //Xu ly sap xep
-            if(!isset($_GET['sort'])){ $key = "tensanpham"; $option = "ASC";}
+            if(!isset($_GET['sort'])){$_GET['sort']="a-z"; $key = "tensanpham"; $option = "ASC";}
             else{
                 if($_GET['sort']=="a-z"){$key = "tensanpham"; $option = "ASC";}
                 else if($_GET['sort']=="z-a"){$key = "tensanpham"; $option = "DESC";}
@@ -70,8 +82,8 @@ require_once "./help/helper.php";
             //Xu ly phan trang
             if(!isset($_GET['page'])){ $page = 1;}
             else{ $page = $_GET['page']; }
-            $sql = Helper::Paginate('sanpham',5,$page,$key,$option,$search)['sql'];
-            $number_page = Helper::Paginate('sanpham',5,$page,$key,$option,$search)['number_page'];
+            $sql = Helper::Paginate('sanpham',8,$page,$key,$option,$search)['sql'];
+            $number_page = Helper::Paginate('sanpham',8,$page,$key,$option,$search)['number_page'];
             $result = $conn->query($sql);
             while($row = $result->fetch_assoc()){
                 include "./card_sp.php";
@@ -86,4 +98,3 @@ require_once "./help/helper.php";
     </div>
 </body>
 </html>
-

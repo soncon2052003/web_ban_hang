@@ -14,25 +14,26 @@
     <body>
         <a href="http://web.test" class="btn btn-primary">Trở về</a>
         <div class="row">
-            <?php
-            require_once "./model/connect.php";
-            if(isset($_GET['id'])){
-                $id = $_GET['id'];
-            }
-            $sql = "SELECT * FROM sanpham WHERE id = $id";
-            $result = $conn->query($sql);
-            while($row = $result->fetch_assoc()){
-                include "./card_sp.php" ;        
-            ?>
-                <div class="col-md-3">
-                    <div class="text text-success">Miêu tả: </div>
-                    <div><?=  $row['mieuta'] ?></div>
-                </div>
+            <div class="col">
+                <?php
+                require_once "./model/connect.php";
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                }
+                $sql = "SELECT * FROM sanpham WHERE id = $id";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc()){
+                    include "./card_sp.php" ;   
+                }     
+                ?>
+            </div>
+            <div class="col">
+                <div class="text text-success">Miêu tả: </div>
+                <div><?=  $row['mieuta'] ?></div>
+            </div>
         </div>
-        
-        <?php
-        }
-        include "./view/comment.php";
-        ?>
+        <div>
+                <?php include "./view/comment.php"; ?>
+        </div>
     </body>
 </html>

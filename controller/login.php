@@ -14,8 +14,11 @@ $so_ptu = count($user);
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if (!$username || !$password){
-    echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
+if (!$username || !$password){ 
+    echo "<script>
+        alert('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.');
+        window.history.back();
+    </script>";
     exit;
 }
 
@@ -26,8 +29,8 @@ for($i=0;$i<$so_ptu;$i++)
             $_SESSION = $user[$i];
             //Xu ly nho mat khau
             if(isset($_POST['remember'])){
-                setcookie('user',$username,time()+3600,'/','',0,0);
-                setcookie('pass',$password,time()+3600,'/','',0,0);
+                setcookie('user',$username,time()+84600,'/','');
+                setcookie('pass',$password,time()+84600,'/','');
             }
             //Chuyen huong trang
             if($user[$i]['role']=='admin'){
@@ -38,7 +41,10 @@ for($i=0;$i<$so_ptu;$i++)
         }
     }
 }
-echo "Tên đăng nhập hoặc mật khẩu không đúng. <a href='javascript: history.go(-1)'>Trở lại</a>";
+echo "<script>
+        alert('Tên đăng nhập hoặc mật khẩu không đúng.');
+        window.history.back();
+    </script>";
 exit;
 
 ?>
