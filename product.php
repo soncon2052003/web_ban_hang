@@ -13,27 +13,32 @@
     </head>
     <body>
         <a href="http://web.test" class="btn btn-primary">Trở về</a>
-        <div class="row">
-            <div class="col">
-                <?php
-                require_once "./model/connect.php";
-                if(isset($_GET['id'])){
-                    $id = $_GET['id'];
-                }
-                $sql = "SELECT * FROM sanpham WHERE id = $id";
-                $result = $conn->query($sql);
-                while($row = $result->fetch_assoc()){
-                    include "./card_sp.php" ;   
-                }     
-                ?>
+        
+        <form action="http://web.test/controller/cart.php" method="post">
+            <div class="row">
+                <div class="col">
+                    <?php
+                    require_once "./model/connect.php";
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                    }
+                    $sql = "SELECT * FROM sanpham WHERE id = $id";
+                    $result = $conn->query($sql);
+                    while($row = $result->fetch_assoc()){
+                        include "./card_sp.php" ;       
+                    ?>
+                </div>
+                <div class="col">
+                    <div class="text text-success">Miêu tả: </div>
+                    <div><?=  $row['mieuta'] ?></div>
+                    <button type="submit" class="btn btn-info my-3" name="add">Thêm vào giỏ<i class="fas fa-shopping-cart"></i></button>
+                </div>
+                <?php } ?>
             </div>
-            <div class="col">
-                <div class="text text-success">Miêu tả: </div>
-                <div><?=  $row['mieuta'] ?></div>
-            </div>
-        </div>
+        </form>
         <div>
                 <?php include "./view/comment.php"; ?>
         </div>
     </body>
 </html>
+<?php var_dump($_SESSION);die; ?>

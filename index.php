@@ -22,17 +22,6 @@ require_once "./help/helper.php";
             <a href="http://web.test" class="btn btn-info">Trang chủ</a>
             <a href="http://web.test/view/tintuc.php" class="btn btn-info">Tin tức</a>
         </div>
-        <?php if(!isset($_SESSION['fullname'])){?>     
-        <div class="col-md-6">
-            <a class="btn btn-info fa-pull-right" href="http://web.test/view/login.php">Đăng nhập</a>
-            <a class="btn btn-info fa-pull-right" href="http://web.test/view/register.php">Đăng ký</a>
-        </div>
-        <?php }else{ ?>       
-        <div class="col-md-6">
-            <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-success" href="http://web.test/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
-            <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://web.test/controller/logout.php"></a>
-        </div>
-        <?php } ?>
     </div> 
 
     <hr>

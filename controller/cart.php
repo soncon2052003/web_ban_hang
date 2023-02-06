@@ -6,11 +6,12 @@ if(isset($_POST['add'])){
             "product_id" => $_POST['product_id'],
             'count' => 1
         );
-        $_SESSION['cart'][0] = $item;        
+        $_SESSION['cart'][0] = $item; 
+        echo "<script>window.history.back();</script>";       
     }else{
         $item_array_id = array_column($_SESSION['cart'],"product_id");
         if(in_array($_POST['product_id'],$item_array_id)){
-            echo "<script>window.location = 'index.php'</script>";
+            echo "<script>window.history.back();</script>";
         }else{
             $count = count($_SESSION['cart']);
             $item = array(
@@ -19,9 +20,9 @@ if(isset($_POST['add'])){
             ); 
 
             $_SESSION['cart'][$count] = $item;  
+            echo "<script>window.history.back();</script>";
         }
     }
-    header("Location: http://web.test/index.php");
 }   
 
 if(isset($_POST['remove'])){  

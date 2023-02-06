@@ -33,7 +33,7 @@ for($i=0;$i<$so_ptu;$i++)
                 setcookie('pass',$password,time()+84600,'/','');
             }
             //Chuyen huong trang
-            if($user[$i]['role']=='admin'){
+            if($user[$i]['role']=='1'){
                 header('Location: http://web.test/quanly.php?id=' . $user[$i]['id']);
             }else{
                 header("Location: http://web.test/index.php?id=" . $user[$i]['id']);
