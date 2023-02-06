@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-require '../model/connect.php';
+require_once '../model/connect.php';
+require_once "../help/helper.php";
+
 header('Content-Type: text/html; charset=UTF-8'); //Khai bao dung Tieng Viet
 
 $sql = "SELECT * FROM user";
@@ -30,7 +32,7 @@ for($i=0;$i<$so_ptu;$i++)
                 setcookie('pass',$password,time()+3600,'/','',0,0);
             }
             //Chuyen huong trang
-            if($user[$i]['role']=='1'){
+            if(Helper::check_admin($user[$i]['id'])==true){
                 header('Location: http://web.test/quanly.php?id=' . $user[$i]['id']);
             }else{
                 header("Location: http://web.test/index.php?id=" . $user[$i]['id']);

@@ -36,13 +36,7 @@
             </div>
         </form>
         <div>
-                <?php include "./view/comment.php"; ?>
-
+            <?php include "./view/comment.php"; ?>
         </div>
-        
-        <?php
-        include "./view/comment.php";
-        ?>
     </body>
 </html>
-<?php var_dump($_SESSION);die; ?>

@@ -81,7 +81,7 @@ require_once "./help/helper.php";
             ?>
         </div>
         <?php
-        $url = "http://web.test/index.php?";
+        $url = "http://web.test/index.php?sort=" . $_GET['sort'] . "&search=" . $search . "&";
         include "./view//pagination.php";
         ?>
     </div>

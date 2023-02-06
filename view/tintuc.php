@@ -12,7 +12,7 @@
 </head>
 <body>
     <h2>Xin chào! Chào bạn đến với trang tin tức.</h2>
-    <?php if($_SESSION['role']=="admin"){ ?>
+    <?php require_once "../help/helper.php"; if(Helper::check_admin($_SESSION['id'])){ ?>
     <a href="http://web.test/quanly.php" class="btn btn-info">Trang quản lý</a>
     <a class="btn btn-success" href="http://web.test/view/them_tintuc.php">Thêm tin tức</a>
     <?php }else{ ?>
@@ -45,6 +45,7 @@
     $url = "http://web.test/view/tintuc.php?";
     require_once "../help/helper.php";
     require_once "../model/connect.php";
+    require_once "../model/user.php";
     //Xu ly phan trang
     if(!isset($_GET['page'])){ $page=1; }
     else{ $page=$_GET['page']; }     
@@ -77,7 +78,7 @@
                 <p class="card-text"><?php echo $row["short"]; ?></p>
                 <p class="card-text"><small class="text-muted"><?php echo "Cập nhật: ".$row["dateCreate"]; ?></small></p>
     <?php
-        if($_SESSION['role']=="admin"){ 
+        if(Helper::check_admin($_SESSION['id'])){ 
     ?>
                 <a href="http://web.test/view/sua_tintuc.php?id=<?= $row['id'] ?>">Sửa</a>
                 <a href="http://web.test/controller/tintuc.php?action=delete&id=<?= $row['id'] ?>" class="card-link">Xóa</a>

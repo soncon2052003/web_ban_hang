@@ -42,7 +42,7 @@
     
     <div class="input-group">
       <div class="form-outline">
-        <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+        <input type="text" name="search" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
       </div>
       <button type="submit" class="btn btn-primary">
         <i class="fas fa-search"></i>
@@ -73,7 +73,7 @@
       }
 
       //Xu ly sap xep
-      if(!isset($_GET['sort'])){ $key = "fullname"; $option = "ASC";}
+      if(!isset($_GET['sort'])){ $_GET['sort']='a-z'; $key = "fullname"; $option = "ASC";}
       else{
         if($_GET['sort']=="a-z"){ $key = "fullname"; $option = "ASC";}
         else if($_GET['sort']=="z-a"){ $key = "fullname"; $option = "DESC"; }
@@ -97,7 +97,6 @@
           <td><?php echo $row["fullname"]; ?></td>
           <td><?php echo $row["age"]; ?></td>
           <td><?php echo $row["sdt"]; ?></td>
-          <td><?php echo $row["role"]; ?></td>
           <td>
               <a href="http://web.test/view/sua_user.php?id=<?= $row['id']; ?>">Sửa</a>
               <a href="http://web.test/controller/xoa_user.php?id=<?= $row['id']; ?>">Xóa</a>
@@ -111,7 +110,7 @@
     <ul class="pagination justify-content-center" style="margin:20px 0">
     
     <?php
-    $url = "http://web.test/view/user.php?sort=".  $_GET['sort'] .  "&search=" . $search . "&";
+    $url = "http://web.test/view/user.php?sort=" . $_GET['sort'] . "&search=" . $search . "&";
     include "pagination.php";
     ?>
 
