@@ -25,12 +25,12 @@ require_once "./help/helper.php";
     </div> 
 
     <hr>
-    <form action="./index.php" method="GET">
-        <div class="row">
+    <form action="./index.php" method="get" >
+        <div class="row"">
             <div class="col-md-4">
                 <div class="input-group mb-3">
                 <select name="sort" class="form-control">
-                    <option value="">--Sắp xếp theo--</option>
+                    <option value="a-z">--Sắp xếp theo--</option>
                     <option value="a-z" <?php if(isset($_GET['sort']) && $_GET['sort']=="a-z"){echo "selected";} ?> >A-Z</option>
                     <option value="z-a" <?php if(isset($_GET['sort']) && $_GET['sort']=="z-a"){echo "selected";} ?> >Z-A</option>
                     <option value="moinhat" <?php if(isset($_GET['sort']) && $_GET['sort']=="moinhat"){echo "selected";} ?> >Mới nhất</option>
@@ -43,7 +43,7 @@ require_once "./help/helper.php";
             </div>
             <div class="col-md-8">
                 <div class="input-group mb-3">
-                    <input type="text" name="search" id="form1" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
+                    <input type="text" name="search" class="form-control" placeholder="Nhập thông tin tìm kiếm"/>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                 </div>
             </div>
@@ -53,9 +53,9 @@ require_once "./help/helper.php";
         <div class="row text-center py-5">           
             <?php
             //Xu ly sap xep
-            if(!isset($_GET['sort'])){$_GET['sort']="a-z"; $key = "tensanpham"; $option = "ASC";}
+            if(!isset($_GET['sort'])){ $_GET['sort'] = 'a-z'; $key = "tensanpham"; $option = "ASC";}
             else{
-                if($_GET['sort']=="a-z"){$key = "tensanpham"; $option = "ASC";}
+                if($_GET['sort']=="a-z"){ $key = "tensanpham"; $option = "ASC";}
                 else if($_GET['sort']=="z-a"){$key = "tensanpham"; $option = "DESC";}
                 else if($_GET['sort']=="moinhat"){$key = "id"; $option = "DESC";}
                 else if($_GET['sort']=="cunhat"){$key = "id"; $option = "ASC";}
@@ -87,3 +87,4 @@ require_once "./help/helper.php";
     </div>
 </body>
 </html>
+

@@ -12,8 +12,7 @@
         <title>Thông tin sản phẩm</title>
     </head>
     <body>
-        <a href="http://web.test" class="btn btn-primary">Trở về</a>
-        
+        <a href="http://web.test" class="btn btn-primary">Trở về</a>        
         <form action="http://web.test/controller/cart.php" method="post">
             <div class="row">
                 <div class="col">
@@ -31,14 +30,19 @@
                 <div class="col">
                     <div class="text text-success">Miêu tả: </div>
                     <div><?=  $row['mieuta'] ?></div>
-                    <button type="submit" class="btn btn-info my-3" name="add">Thêm vào giỏ<i class="fas fa-shopping-cart"></i></button>
+                    <button type="submit" class="btn btn-info border my-3" name="add"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ</button>
                 </div>
                 <?php } ?>
             </div>
         </form>
         <div>
                 <?php include "./view/comment.php"; ?>
+
         </div>
+        
+        <?php
+        include "./view/comment.php";
+        ?>
     </body>
 </html>
 <?php var_dump($_SESSION);die; ?>

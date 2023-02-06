@@ -9,17 +9,18 @@ include_once "./help/helper.php";
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Đơn hàng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://web.test/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="shopping-cart">
-                    <p class="h3 text text-success">Giỏ hàng</h3>
-                    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="shopping-cart">
+                <h6>Giỏ hàng</h6>
+                <hr>
 
                     <?php   
                     if(isset($_SESSION['cart'])){

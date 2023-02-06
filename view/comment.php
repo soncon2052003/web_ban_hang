@@ -5,13 +5,7 @@
         <div class="card">
             <div class="card-body p-4">
                 <input type ='hidden' name='id_sp' value='<?= $id ?>' >
-                <?php
-                if(isset($_SESSION['fullname'])){
-                ?>
                 <h4 class="text text-info" name="fullname">Chào <?= $_SESSION['fullname'] ?> </h4>
-                <?php
-              }else{echo "<p class='h4 text text-warning'>Hãy đăng nhập để bình luận bạn nhé!</p>";}
-                ?>
                 <h5>Bạn có cảm nhận gì không?</h5>
                 <ul class="rating mb-3" data-mdb-toggle="rating">
                     <a>
