@@ -53,7 +53,7 @@ require_once "./help/helper.php";
         <div class="row text-center py-5">           
             <?php
             //Xu ly sap xep
-            if(!isset($_GET['sort'])){ $_GET['sort'] = 'a-z'; $key = "tensanpham"; $option = "ASC";}
+            if(!isset($_GET['sort'])){ $_GET['sort'] = 'moinhat'; $key = "id"; $option = "DESC";}
             else{
                 if($_GET['sort']=="a-z"){ $key = "tensanpham"; $option = "ASC";}
                 else if($_GET['sort']=="z-a"){$key = "tensanpham"; $option = "DESC";}

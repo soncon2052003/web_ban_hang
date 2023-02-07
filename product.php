@@ -12,7 +12,8 @@
         <title>Thông tin sản phẩm</title>
     </head>
     <body>
-        <a href="http://web.test" class="btn btn-primary">Trở về</a>        
+        <a href="http://web.test" class="btn btn-primary">Trở về</a>    
+        <br><br>    
         <form action="http://web.test/controller/cart.php" method="post">
             <div class="row">
                 <div class="col">
@@ -24,10 +25,12 @@
                     $sql = "SELECT * FROM sanpham WHERE id = $id";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
-                        include "./card_sp.php" ;       
                     ?>
+                    <img src="<?= $row['image'] ?>" style="width: 500px;height: 300px">
+                    <input type="hidden" name="product_id" value=<?= $row['id'] ?> >
                 </div>
                 <div class="col">
+                    <p class="h2 text text-danger"><?= $row['tensanpham'] ?></p>
                     <div class="text text-success">Miêu tả: </div>
                     <div><?=  $row['mieuta'] ?></div>
                     <button type="submit" class="btn btn-info border my-3" name="add"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ</button>
@@ -36,7 +39,19 @@
             </div>
         </form>
         <div>
-            <?php include "./view/comment.php"; ?>
+            <?php 
+            if(isset($_SESSION['id'])){
+                include "./view/comment_form.php"; //Khung comment 
+            }else{
+                echo "<br><p class='text text-danger'>HÃY ĐĂNG NHẬP ĐỂ BÌNH LUẬN BẠN NHÉ!</p><br>";
+            }
+            ?>
         </div>
+        <div class="row"> 
+        <?php 
+        require_once "./model/comment.php";
+        comment::show_comment($id) 
+        ?>
+        </div> 
     </body>
 </html>

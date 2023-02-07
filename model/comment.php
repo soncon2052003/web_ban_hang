@@ -1,11 +1,11 @@
 <?php
 require "database.php";
-class comment{
+class comment{  
     public $id;
     public $fullname;
     public $title;
     public $content;
-    public $id_sp;
+    public $id_sp; 
     public function __construct($fullname,$title,$content,$id_sp)
     {
         $this->fullname = $fullname;
@@ -39,5 +39,24 @@ class comment{
             echo "Lỗi " . $sql . "<br>" .$conn->error;
         }
     }
+
+    public static function show_comment($id_sp){
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "SELECT * FROM comment where id_sp=$id_sp";
+        $result = $conn->query($sql);
+        while($row = $result->fetch_assoc()){
+            include("C:\laragon\www\web/view/comment.php");
+        }
+    }
+
+    public function delete_comment($id_cm){
+        $db= new Database;
+        $conn = $db->conn();
+        $sql = "DELETE FROM comment WHERE id=$id_cm";
+        if($conn->query($sql)===true){
+        
+        }
+    }
 }
-?>
+?>    

@@ -43,8 +43,8 @@
         </div>
         <?php }else{ ?>       
         <div class="col-md-6">
-            <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-success" href="http://web.test/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
-            <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://web.test/controller/logout.php"></a>
+            <a class="fa-solid fa-user fa-2x fa-border fa-pull-right btn btn-danger" href="http://web.test/view/sua_user.php?id=<?= $_SESSION['id'] ?>"><?= $_SESSION['fullname']?></a>
+            <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right btn btn-danger" href="http://web.test/controller/logout.php"></a>
         </div>
         <?php } ?>
     </nav>
