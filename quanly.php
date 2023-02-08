@@ -23,6 +23,8 @@ $result = $conn->query($sql);
         <a href="http://web.test/view/user.php" class="btn btn-info">Quản lý người dùng</a> <br><br>
         <a href="http://web.test/view/sp.php" class="btn btn-info">Quản lý sản phẩm</a> <br><br>
         <a href="http://web.test/view/tintuc.php" class="btn btn-info">Quản lý tin tức</a> <br><br>
+        <a href="" class="btn btn-info">Quản trị bình luận</a> <br><br>
+        <a href="" class="btn btn-info">Quản trị đơn hàng</a> <br><br>
         <a href="http://web.test/view/them_admin.php" class="btn btn-info">Thêm admin</a>
     </div>  
 </body>

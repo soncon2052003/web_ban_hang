@@ -1,7 +1,7 @@
 <form action="http://web.test/controller/cart.php" method="post" class="cart-items">
     <div class="border rounded">
         <div class="row">
-            <a href="" class="col-md-5 pl-0">
+            <a href="http://web.test/product.php?id=<?= $row['id'] ?>" class="col-md-5 pl-0">
                 <img src= "<?=$row['image']?>" style="width: 250px;height: 180px">
             </a>
             <div class="col-md-4 py-4">

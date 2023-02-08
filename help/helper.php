@@ -62,5 +62,12 @@ class Helper {
         }
         return false;
     }
+
+    public static function get_today(){
+        return "<script>
+        let currentDate = new Date().toJSON().slice(0, 10);
+        document.write(currentDate);
+        </script>";
+    }
 }
 ?>

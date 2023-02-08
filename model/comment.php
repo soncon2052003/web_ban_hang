@@ -6,12 +6,14 @@ class comment{
     public $title;
     public $content;
     public $id_sp; 
-    public function __construct($fullname,$title,$content,$id_sp)
+    public $date;
+    public function __construct($fullname,$title,$content,$id_sp,$date)
     {
         $this->fullname = $fullname;
         $this->title = $title;
         $this->content = $content;
         $this->$id_sp;
+        $this->$date;
     } 
     public function get_id(){
         return $this->id;
@@ -28,13 +30,19 @@ class comment{
     public function get_id_sp(){
         return $this->id_sp;
     }
+    public function get_date(){
+        return $this->date;
+    }
     public function them_comment(){
         $db= new Database;
         $conn = $db->conn();
-        $sql = "INSERT INTO comment(fullname,title,content,id_sp) 
-        VALUES('$this->fullname','$this->title','$this->content','$this->id_sp')";
+        $sql = "INSERT INTO comment(fullname,title,content,id_sp,date) 
+        VALUES('$this->fullname','$this->title','$this->content','$this->id_sp','$this->date')";
         if($conn->query($sql)===true){
-            header("Location: http://web.test/product.php?id=<?= $this->id_sp ?>");
+            echo "<script>
+            alert('Thêm sản phẩm thành công!');
+            window.history.back();
+            </script>";
         }else{
             echo "Lỗi " . $sql . "<br>" .$conn->error;
         }
@@ -48,7 +56,7 @@ class comment{
         while($row = $result->fetch_assoc()){
             include("C:\laragon\www\web/view/comment.php");
         }
-    }
+    }  
 
     public function delete_comment($id_cm){
         $db= new Database;

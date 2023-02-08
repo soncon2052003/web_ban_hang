@@ -34,7 +34,7 @@
                     <div class="text text-success">Miêu tả: </div>
                     <div><?=  $row['mieuta'] ?></div>
                     <button type="submit" class="btn btn-info border my-3" name="add"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ</button>
-                </div>
+                </div> 
                 <?php } ?>
             </div>
         </form>
