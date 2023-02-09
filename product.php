@@ -12,9 +12,8 @@
         <title>Thông tin sản phẩm</title>
     </head>
     <body>
-        <a href="http://web.test" class="btn btn-primary">Trở về</a>    
         <br><br>    
-        <form action="http://web.test/controller/cart.php" method="post">
+        <form action="http://web.test/controller/cart.php?action=add_comment" method="post">
             <div class="row">
                 <div class="col">
                     <?php

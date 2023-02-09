@@ -14,7 +14,7 @@
             <div class="col-md-3 py-5">
                 <div>
                     <button type="submit" name="minus" class="btn bg-light border rounded-circle"><i class="fas fa-minus"></i></button>
-                    <input type="int" value="<?php
+                    <input type="int" size="10" value="<?php
                         for($i=0;$i<count($_SESSION['cart']);$i++){
                             if($_SESSION['cart'][$i]['product_id']==$row['id']){
                                 $chiso = $i;

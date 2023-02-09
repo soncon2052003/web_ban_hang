@@ -20,10 +20,11 @@ $result = $conn->query($sql);
     <a class="fa-solid fa-right-from-bracket fa-2x fa-border fa-pull-right" href="http://web.test/controller/logout.php"></a>
     <h2 class="text text-info">HÃY CHỌN MỘT CHỨC NĂNG</h2>
     <div class="container mt-3">
+        <a href="http://web.test" class="btn btn-info">Trang người dùng</a> <br><br>
         <a href="http://web.test/view/user.php" class="btn btn-info">Quản lý người dùng</a> <br><br>
         <a href="http://web.test/view/sp.php" class="btn btn-info">Quản lý sản phẩm</a> <br><br>
         <a href="http://web.test/view/tintuc.php" class="btn btn-info">Quản lý tin tức</a> <br><br>
-        <a href="" class="btn btn-info">Quản trị bình luận</a> <br><br>
+        <a href="http://web.test" class="btn btn-info">Quản trị bình luận</a> <br><br>
         <a href="" class="btn btn-info">Quản trị đơn hàng</a> <br><br>
         <a href="http://web.test/view/them_admin.php" class="btn btn-info">Thêm admin</a>
     </div>  

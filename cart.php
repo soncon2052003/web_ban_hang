@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
-include "./model/header.php";
-include "./model/sanpham.php";
+include_once "./model/header.php";
+include_once "./model/sanpham.php";
 include_once "./help/helper.php";
 ?>
 
@@ -15,7 +15,7 @@ include_once "./help/helper.php";
     <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="http://web.test/style.css">
 </head>
-<body>
+<body>  
     <div class="row">
         <div class="col-md-6">
             <div class="shopping-cart">

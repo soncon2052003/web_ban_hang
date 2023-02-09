@@ -1,5 +1,11 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
+<?php 
+require_once "../model/header.php"; 
+require_once "../help/helper.php";
+require_once "../model/connect.php";
+require_once "../model/user.php";
+?>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Tin tức</title>
@@ -11,15 +17,13 @@
     <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2>Xin chào! Chào bạn đến với trang tin tức.</h2>
     <?php require_once "../help/helper.php"; if(Helper::check_admin($_SESSION['id'])){ ?>
     <a href="http://web.test/quanly.php" class="btn btn-info">Trang quản lý</a>
     <a class="btn btn-success" href="http://web.test/view/them_tintuc.php">Thêm tin tức</a>
-    <?php }else{ ?>
-    <a class="btn btn-success" href="http://web.test?id=<?= $_SESSION['id'] ?>">Về trang chủ</a>
-    <?php } ?>
+    <?php }
+    ?>
 
-    <hr>
+    <br>
     <form action="" method="GET">
     <div class="row">
       <div class="col-md-4">
@@ -43,9 +47,6 @@
 
     <?php
     $url = "http://web.test/view/tintuc.php?";
-    require_once "../help/helper.php";
-    require_once "../model/connect.php";
-    require_once "../model/user.php";
     //Xu ly phan trang
     if(!isset($_GET['page'])){ $page=1; }
     else{ $page=$_GET['page']; }     
@@ -92,3 +93,5 @@
     include "./pagination.php";
     ?>
 </body>   
+
+</html>

@@ -6,7 +6,7 @@ if(isset($_GET['action'])){
         $sql = "DELETE FROM sanpham WHERE id=$id";
         
         if($conn->query($sql)===true){
-            header("Location: http://localhost/web/view/sp.php");
+            header("Location: http://web.test/view/sp.php");
         }else{
             echo "Lỗi: " .$sql. "<br>" . $conn->error;
         }

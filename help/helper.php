@@ -52,7 +52,7 @@ class Helper {
     }
 
     public static function check_admin($id){
-        require_once "../model/database.php";
+        require_once "C:\laragon\www\web\model/database.php";
         $db = new Database;
         $conn = $db->conn();
         $sql = "SELECT id FROM user WHERE role_id in (SELECT role_id FROM role WHERE NAME='admin')";
@@ -61,13 +61,6 @@ class Helper {
             if($row['id']==$id) return true;
         }
         return false;
-    }
-
-    public static function get_today(){
-        return "<script>
-        let currentDate = new Date().toJSON().slice(0, 10);
-        document.write(currentDate);
-        </script>";
     }
 }
 ?>

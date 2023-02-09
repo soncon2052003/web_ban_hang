@@ -14,17 +14,9 @@ require_once "./help/helper.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="row">     
-        <div class="col-md-6">
-            <a href="http://web.test" class="btn btn-info">Trang chủ</a>
-            <a href="http://web.test/view/tintuc.php" class="btn btn-info">Tin tức</a>
-        </div>
-    </div> 
-
-    <hr>
+    <br>
     <form action="./index.php" method="get" >
         <div class="row"">
             <div class="col-md-4">

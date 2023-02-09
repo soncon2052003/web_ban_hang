@@ -49,25 +49,28 @@ input#rate-5:checked ~ label{
                 <h4 class="text text-info" name="fullname">Chào <?= $_SESSION['fullname'] ?> </h4>
                 <h5>Bạn có cảm nhận gì không?</h5>
                 <div class="star-widget fa-pull-left">
-                  <input type="radio" name="rate" id="rate-5">
+                  <input type="radio" name="rate" id="rate-5" value="5">
                   <label for="rate-5" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-4">
+                  <input type="radio" name="rate" id="rate-4" value="4">
                   <label for="rate-4" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-3">
+                  <input type="radio" name="rate" id="rate-3" value="3">
                   <label for="rate-3" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-2">
+                  <input type="radio" name="rate" id="rate-2" value="2">
                   <label for="rate-2" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-1">
+                  <input type="radio" name="rate" id="rate-1" value="1">
                   <label for="rate-1" class="fas fa-star"></label>
                 </div>
-                <div class="form-outline" name="content">
-                  <textarea class="form-control" name="content" rows="4"></textarea>                
+                <br>
+                <form action="" class="form-outline" name="content">
+                  <header></header>
+                  <textarea class="form-control" name="content" rows="4"></textarea>   
                 <div class="d-flex justify-content-between mt-3">
                   <button type="reset" class="btn btn-success">Ghi lại</button>
                   <button type="submit" name="add_comment" class="btn btn-danger">
-                    Gửi <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                    Gửi<i class="fas fa-long-arrow-alt-right ms-1"></i>
                   </button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
