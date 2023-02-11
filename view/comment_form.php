@@ -48,7 +48,7 @@ input#rate-5:checked ~ label{
                 <input type ='hidden' name='id_sp' value='<?= $id ?>' >
                 <h4 class="text text-info" name="fullname">Chào <?= $_SESSION['fullname'] ?> </h4>
                 <h5>Bạn có cảm nhận gì không?</h5>
-                <div class="star-widget fa-pull-left">
+                <div class="star-widget fa-pull-left" value="<?php if(isset($comment['rate'])){echo $comment['rate'];} ?>">
                   <input type="radio" name="rate" id="rate-5" value="5">
                   <label for="rate-5" class="fas fa-star"></label>
                   <input type="radio" name="rate" id="rate-4" value="4">
@@ -63,7 +63,9 @@ input#rate-5:checked ~ label{
                 <br>
                 <form action="" class="form-outline" name="content">
                   <header></header>
-                  <textarea class="form-control" name="content" rows="4"></textarea>   
+                  <textarea class="form-control" name="content" rows="4">
+                    <?php if(isset($comment['content'])){echo $comment['content'];} ?>
+                  </textarea>   
                 <div class="d-flex justify-content-between mt-3">
                   <button type="reset" class="btn btn-success">Ghi lại</button>
                   <button type="submit" name="add_comment" class="btn btn-danger">

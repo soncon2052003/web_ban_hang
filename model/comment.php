@@ -69,5 +69,6 @@ class comment{
             echo "Lỗi " . $sql . "<br>" .$conn->error;
         }
     }
+
 }
 ?>    

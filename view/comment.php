@@ -19,7 +19,7 @@
             <?php
 
                 }
-            } 
+            }    
             ?>  
             </div>
             <div class='card-body'>
@@ -30,7 +30,8 @@
         <div>
             <?php 
             require_once("C:\laragon\www\web/help/helper.php");
-            if($row['fullname']==$_SESSION['fullname'] || Helper::check_admin($_SESSION['id'])){ ?>
+            if(isset($_SESSION['fullname']) && $row['fullname']==$_SESSION['fullname'] || Helper::check_admin($_SESSION['id'])){ 
+            ?>
                 <a href="../controller/comment.php?action=delete&id=<?= $row['id'] ?>" class="fa-pull-right">Xóa</a>
             <?php } ?>
         </div>

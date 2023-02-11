@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <body>
 <h2>Thông tin sản phẩm</h2>
@@ -99,9 +100,9 @@
         <td><?php echo $row["image"]; ?></td>
         <td>
           <a href="http://web.test/view/sua_sp.php?action=fix&id=<?=$row['id'];?>">Sửa</a>
-          <a href="http://web.test/controller/sanpham.php?action=delete&id=<?=$row['id'];?>">Xóa</a>
+          <a class="btn-xoa" href="void:javascript(0)" data-url="http://web.test/controller/sanpham.php?action=delete&id=<?=$row['id'];?>">Xóa</a>
         </td>
-      </tr>
+      </tr>  
     <?php
     }
     ?>
@@ -109,7 +110,27 @@
   </table>
   <?php include('./pagination.php'); ?>
 </div>
-
+<script>
+  $('.btn-xoa').on('click', function () {
+      $thisButton = $(this);
+      $.ajax({
+        url: $thisButton.data('url'),
+        type: "get",
+      })
+      .done(function (response) {
+        location.reload();
+        console.log(response, 'thanh cong');
+      })
+      .fail(function (response) {
+        $('.toast-body').html(response.responseJSON.message);
+        var myAlert = $('.toast');
+        var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
+        bsAlert.show();
+      }).always(function () {
+        removeSpinner($thisButton);
+      });
+    });
+</script>
 </body>
 </html> 
 

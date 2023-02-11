@@ -4,6 +4,8 @@ require_once "./model/header.php";
 require_once "./model/connect.php";
 require_once "./model/sanpham.php";
 require_once "./help/helper.php";
+
+$list_ratings = SanPham::list_star();
 ?>
 
 <html>
@@ -16,6 +18,12 @@ require_once "./help/helper.php";
     <script src="https://kit.fontawesome.com/67973cf856.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="rating" style="display: none;">
+    <?php foreach ($list_ratings as $rating) { ?>
+            <p class="p"><?= $rating ?></p>
+    <?php  } ?>   
+    </div>
+
     <br>
     <form action="./index.php" method="get" >
         <div class="row"">
@@ -67,7 +75,7 @@ require_once "./help/helper.php";
             $number_page = Helper::Paginate('sanpham',8,$page,$key,$option,$search)['number_page'];
             $result = $conn->query($sql);
             while($row = $result->fetch_assoc()){
-                include "./card_sp.php";
+                include "./view/card_sp2.php";
             } 
             mysqli_close($conn); 
             ?>

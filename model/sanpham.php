@@ -56,6 +56,48 @@ class SanPham{
             echo "Lỗi ". $sql ."<br>". $conn->error;
         }
     } 
+
+    public static function get_star($id){
+        require_once __DIR__ . "\database.php";
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "SELECT rate FROM comment WHERE id_sp=$id";
+        $total_star = 0;
+        $rate = [];
+        $result = $conn->query($sql);
+        while($row = $result->fetch_assoc()){
+            $rate[] = $row;
+            $total_star += $row['rate'];
+        }
+        $count = count($rate);
+        if($count>0)
+            return $total_star/$count;
+        else return 0;
+    }
+
+    public static function get_id_sp(){
+        require_once __DIR__ . "\database.php";
+        $db = new Database;
+        $conn = $db->conn();
+        $sql = "SELECT id FROM sanpham";
+        $result = $conn->query($sql);
+        $list = [];
+        while($row = $result->fetch_assoc()){
+            $list[] = $row;
+        }
+        return $list;
+    }
+
+    public static function list_star(){
+        // Initial Ratings
+        $result = SanPham::get_id_sp();
+        $count = count($result);
+        for($i=0;$i<$count;$i++){
+            $rating["product" . $result[$i]['id']] = SanPham::get_star($result[$i]['id']);
+        }
+        return $rating;
+    }
+
 }
 
 ?>

@@ -59,7 +59,6 @@
           <th>Fullname</th>
           <th>Age</th>
           <th>Sdt</th>
-          <th>Quyền</th>
           <th>Chức năng</th>
         </tr>
       </thead>
