@@ -1,0 +1,5 @@
+--Trang quản lý
+username: 001; pass: 123;
+--Trang người dùng
+username: 002; 003; 004; 005; 006
+pass: 123
