@@ -8,28 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<form action=""> 
-  <select name="customers" onchange="showCustomer(this.value)">
-    <option value="">Select a customer:</option>
-    <option value="ALFKI">Alfreds Futterkiste</option>
-    <option value="NORTS ">North/South</option>
-    <option value="WOLZA">Wolski Zajazd</option>
-  </select>
-</form>
-<script>
-    function showCustomer(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    }
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-    xhttp.open("GET", "./api.php?q="+str);
-    xhttp.send();
-    }
-</script>
 <div class="container mt-3">
     <h2>Sửa sản phẩm</h2>
     <?php
