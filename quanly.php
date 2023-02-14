@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <?php
 session_start();
-require "./model/connect.php";
-$sql = "SELECT * FROM sanpham LIMIT 6";
-$result = $conn->query($sql);
+require_once "./help/helper.php";
+if(Helper::check_admin($_SESSION['role'])==false){
+    header("Location: http://web.test");
+}
 ?>
 
 <html>
