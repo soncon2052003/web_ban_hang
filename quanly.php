@@ -2,7 +2,7 @@
 <?php
 session_start();
 require_once "./help/helper.php";
-if(Helper::check_admin($_SESSION['role'])==false){
+if(Helper::check_admin($_SESSION['id'])===false){
     header("Location: http://web.test");
 }
 ?>
