@@ -6,7 +6,7 @@
 <?php 
 class Helper {
     public static function Paginate($sql_name, $limit_a_page,$page,$key,$sort_option,$search){
-        require_once "C:\laragon\www\web\model\database.php";
+        require_once "G:\laragon\www\web\model\database.php";
         $db = new Database;
         $conn = $db->conn();
 
@@ -43,7 +43,7 @@ class Helper {
     }  
 
     public static function getData($table_name){
-        require_once "C:\laragon\www\web\model\database.php";
+        require_once "G:\laragon\www\web\model\database.php";
         $db = new Database;
         $conn = $db->conn();
         $sql = "SELECT * FROM $table_name";
@@ -52,7 +52,7 @@ class Helper {
     }
 
     public static function check_admin($id){
-        require_once "C:\laragon\www\web\model/database.php";
+        require_once "G:\laragon\www\web\model/database.php";
         $db = new Database;
         $conn = $db->conn();
         $sql = "SELECT id FROM user WHERE role_id in (SELECT role_id FROM role WHERE NAME='admin')";

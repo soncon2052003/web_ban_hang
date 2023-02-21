@@ -1,6 +1,6 @@
 <?php
 require __DIR__.'\database.php';
-require('C:\laragon\www\web\help\helper.php');
+require('G:\laragon\www\web\help\helper.php');
 //require_once "database.php";
 //require_once "../help/helper.php";
 

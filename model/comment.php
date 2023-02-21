@@ -53,7 +53,7 @@ class comment{
         $sql = "SELECT * FROM comment WHERE id_sp=$id_sp ORDER BY id DESC";
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()){
-            include("C:\laragon\www\web/view/comment.php");
+            include("G:\laragon\www\web/view/comment.php");
         }
     }  
 

@@ -100,17 +100,6 @@
         <td><?php echo $row["image"]; ?></td>
         <td>
           <a href="http://web.test/view/sua_sp.php?action=fix&id=<?=$row['id'];?>">Sửa</a>
-          <div class="w3-container">
-            <button onclick="document.getElementById('btn-xoa').style.display='block'" class="w3-button w3-black">Sửa</button>
-            <div id="btn-xoa" class="w3-modal">
-              <div class="w3-modal-content">
-                <div class="w3-container">
-                  <span onclick="document.getElementById('btn-xoa').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                  <p>Hello</p>
-                </div>
-              </div>
-            </div>   
-          </div>
           <a class="btn-xoa" href="void:javascript(0)" data-url="http://web.test/controller/sanpham.php?action=delete&id=<?=$row['id'];?>">Xóa</a>
         </td>
       </tr>  
